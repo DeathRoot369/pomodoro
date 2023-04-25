@@ -202,6 +202,7 @@ case $input in
     notify-send "tomato end..."
 
     echo $job >> job.txt
+    echo "$ttime Minute" >> job.txt
     echo "---------" >> job.txt
 
     echo -e "\n"
