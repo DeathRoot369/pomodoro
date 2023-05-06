@@ -195,8 +195,14 @@ case $input in
 
     read -p "Enter tomato time(minuts): " ttime
     read -p "Enter your job: " job
-    echo -e "\n time tomato: $ttime'm \n"
+    DT=`date +%X`
+    echo -e "\n time start: $DT"
+    echo -e "time tomato: $ttime'm"
+    echo -e "job: $job \n"
     echo -e "exit with ^C \n"
+
+    echo "Time: $DT" >> job.txt
+
     sleep "$ttime"m
     mplayer .m/warnning.wav
     notify-send "tomato end..."
@@ -227,8 +233,21 @@ case $input in
   "3" )
     clear
     cowsay "CLEAR job.txt"
-    echo " " > job.txt
-    echo -e "Done! \n"
+    read -p "y/n: " jodern
+    if [[ "$jodern" == "y" ]]; then
+      echo " " > job.txt
+      echo -e "Done! \n"
+    else
+      echo "tschuess!"
+      exit
+
+    fi
+
+#    clear
+#    cowsay "CLEAR job.txt"
+#    echo " " > job.txt
+#    echo -e "Done! \n"
+
   ;;
 
 esac
@@ -236,3 +255,4 @@ esac
 }
 
 funcx
+clear
